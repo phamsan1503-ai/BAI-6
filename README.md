@@ -11,7 +11,7 @@ _Bài tập yêu cầu:_
 - Hiển thị dữ liệu đọc được lên màn hình terminal qua UART
 
 
-***File code kết quả: [Link](https://github.com/phamsan1503-ai/BAI-5)***
+***File code kết quả: [Link](https://github.com/phamsan1503-ai/BAI-6)***
 
 
 ### 1. Cấu hình STM32 là Master I2C 
