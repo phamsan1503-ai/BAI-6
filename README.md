@@ -194,5 +194,4 @@ int main(void){
 
 
 
-```
-***Video  kết quả: [Link](https://drive.google.com/drive/folders/1pxEtEL510zTSKQkZHq40Ss9nMOm-HtgT?usp=drive_link)***
+
