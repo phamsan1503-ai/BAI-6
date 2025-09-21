@@ -24,7 +24,7 @@ int fputc(int ch, FILE *f);
 
 
 void BH1750_Config(void){
-    uint8_t lenh [] = {0x01, 0x07, 0x10}; // Power ON, Reset, Continuous H-Resolution Mode
+    uint8_t lenh [] = {0x01, 0x07, 0x10};
     for (uint8_t i = 0; i < sizeof(lenh); i++) {
         I2C2_Write(BH1750_ADDR, lenh[i]);
     }
@@ -167,3 +167,4 @@ int main(void){
     }
 
 }
+
