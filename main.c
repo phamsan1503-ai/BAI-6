@@ -8,7 +8,6 @@
 
 #define BH1750_ADDR   (0x23<<1)
 
-// ------------ Prototype -------------
 void UART1_Config(void);
 void I2C2_Config(void);
 void GPIO_Config_I2C2(void);
@@ -18,14 +17,11 @@ void I2C2_Write(uint8_t addr, uint8_t data);
 void I2C2_Read(uint8_t addr, uint8_t *data, uint8_t size);
 void delay_ms(uint32_t ms);
 
-// redirect printf
 struct __FILE { int handle; };
 FILE __stdout;
 int fputc(int ch, FILE *f);
 
 
-
-// ------------ BH1750 -------------
 
 void BH1750_Config(void){
     uint8_t lenh [] = {0x01, 0x07, 0x10}; // Power ON, Reset, Continuous H-Resolution Mode
@@ -42,8 +38,7 @@ uint16_t BH1750_GetLux(void){
     I2C2_Read(BH1750_ADDR, raw_data, 2);
     raw_value = (raw_data[0] << 8) | raw_data[1];
 
-    // Tuong duong raw_value / 1.2, s? d?ng s? nguyên
-    return (raw_value * 5) / 6; // 1/1.2 ˜ 5/6
+    return (raw_value * 5) / 6; 
 }
 
 
@@ -108,7 +103,6 @@ void I2C2_Read(uint8_t addr, uint8_t *data, uint8_t size){
     I2C_AcknowledgeConfig(I2C2, ENABLE);
 }
 
-// ------------ UART1 -------------
 void UART1_Config(void){
     USART_InitTypeDef usart;
     GPIO_InitTypeDef gpio;
@@ -148,16 +142,14 @@ int fputc(int ch, FILE *f){
     return ch;
 }
 
-// ------------ Delay -------------
 void delay_ms(uint32_t ms) {
     for(uint32_t i=0; i<ms; i++) {
         for(uint32_t j=0; j<8000; j++) {
-            __NOP(); // l?nh tr?ng, d? compiler không t?i uu b? vòng l?p
+            __NOP(); 
         }
     }
 }
 
-// ------------ MAIN -------------
 int main(void){
     uint16_t light_val = 0;
 
@@ -173,4 +165,5 @@ int main(void){
         printf("BH1750 Lux: %u lx\r\n", light_val);
         delay_ms(500);
     }
+
 }
